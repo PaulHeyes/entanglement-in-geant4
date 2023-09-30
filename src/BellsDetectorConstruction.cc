@@ -28,11 +28,14 @@
 
 /*
 Construct() - method
-The geometry is similar to that of the bells experiment, consisting of two scatterers and two detectors (placed in a world). The material used for all these objects is sodium iodide. In order to detect all possible angles at once the detectors are designed as cylindrical rings around the scatterers (detector one is blue, detector 2 is red). For closer resemblance to actual PET systems, crystals may be placed around these rings and act as detectors. In the extent of this simulation things are kept simpler though.
+The geometry is similar to that of the bells experiment, consisting of two scatterers and two detectors (placed in a world). 
+The material used for all these objects is sodium iodide. In order to detect all possible angles at once the detectors are designed as cylindrical rings 
+around the scatterers (detector one is blue, detector 2 is red). 
 
 ConstructSDandField() - method
-Here the before constructed detectors are assigned the attribute of actually detecting, i.e. G4VSensitiveDetector objects are assigned to the corresponding volumes. 
-The scatterers also become sensitive detectors, this however is mainly implemented in order to check the program is working properly (i.e. check the energy of the photons and count the hits).
+Here the before constructed detectors are assigned the attribute of actually detecting, i.e. G4VSensitiveDetector objects are assigned to the corresponding 
+volumes. The scatterers also become sensitive detectors, this however is mainly implemented in order to check the program is working properly 
+(i.e. check the energy of the photons and count the hits).
 */
 
 #include "BellsDetectorConstruction.hh"
