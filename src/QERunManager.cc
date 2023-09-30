@@ -31,7 +31,7 @@ This version is derived from Geant4's G4RunManager class. It is overridden in or
 In the event loop a second event is created, processed, analysed and terminated after every first event, which is implemented in the ProcessQEEvent(), GenerateQEEvent and TerminateQEEvent() methods.
 
 ProcessQEEvent()
-The 'GeneratePrimaries()' method of the EntangledGeneratorAction is called. I am unsure at what point all the values are set, since the constructor wasn't explicitly called (but I might be wrong, and since it works, I must be wrong...).
+The 'GeneratePrimaries()' method of the EntangledGeneratorAction is called. 
 
 TerminateQEEvent()
 Works in complete analogy to TerminateOneEvent(), i.e. current event is terminated.
