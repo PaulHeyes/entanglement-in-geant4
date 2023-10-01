@@ -36,7 +36,8 @@ Before every first event, the external variables, necessary for handling the qua
 to zero.
 
 ProcessQEEvent()
-The 'GeneratePrimaries()' method of the EntangledGeneratorAction is called. 
+The 'GeneratePrimaries()' method of the EntangledGeneratorAction is called (for every first event, the equivalent method in
+BellsGeneratorAction is called via ProcessOneEvent()).
 
 TerminateQEEvent()
 Works in complete analogy to TerminateOneEvent(), i.e. current event is terminated.
