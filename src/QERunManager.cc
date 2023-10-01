@@ -23,12 +23,17 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 16.09.2015
-//Brief Implementation of the QERunManager class
+// Paul Heyes, 2019
+// Brief Implementation of the QERunManager class
 
 /*
 This version is derived from Geant4's G4RunManager class. It is overridden in order to create a quantum entangled gamma event.
-In the event loop a second event is created, processed, analysed and terminated after every first event, which is implemented in the ProcessQEEvent(), GenerateQEEvent and TerminateQEEvent() methods.
+
+DoEventLoop()
+In the event loop a second event is created, processed, analysed and terminated after every first event, which is implemented 
+in the ProcessQEEvent(), GenerateQEEvent and TerminateQEEvent() methods, respectively.
+Before every first event, the external variables, necessary for handling the quantum entangled Compton scattering, are (re)set 
+to zero.
 
 ProcessQEEvent()
 The 'GeneratePrimaries()' method of the EntangledGeneratorAction is called. 
@@ -106,11 +111,11 @@ QERunManager::~QERunManager(){
 
  void QERunManager::ProcessQEEvent(G4int i_event)
  {
-   //G4cerr << "ProcessQE started" << G4endl;
+  // G4cerr << "ProcessQE started" << G4endl;
   currentQEEvent = GenerateQEEvent(i_event);
-  //G4cerr << "QEEvent created" << G4endl;
+  // G4cerr << "QEEvent created" << G4endl;
   eventManager->ProcessOneEvent(currentQEEvent);
-  //G4cerr << "PreAnalysis" << G4endl;
+  // G4cerr << "PreAnalysis" << G4endl;
   AnalyzeEvent(currentQEEvent);
   UpdateScoring();
   if(i_event<n_select_msg) G4UImanager::GetUIpointer()->ApplyCommand(msgText);
