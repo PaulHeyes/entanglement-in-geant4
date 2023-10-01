@@ -25,7 +25,7 @@
  //
  // $Id$
  //
- /////////////// Original G4LivermoreComptonModel: ////////////////////
+ ///////////////        G4LivermoreComptonModel:       ////////////////////
  //
  // Authors: G.Depaola & F.Longo
  //
@@ -42,21 +42,26 @@
  //
  //
  //
- ///////////////            QEComptonModel:            ////////////////////
+ ///////////////             QEComptonModel:            ////////////////////
  //
  // Author: Paul Heyes
  // 
  // Main changes compared to orginial model:
  // - SampleSecondaries method: 
- //		Differentiation between 'first' and 'second' photon of the quantum entangled gamma pair is made.
- // 		For the first photon, handling is identical to original model; additionally polar and azimuthal
- // 		scattering angles are saved to external variables (the method checks the existence of a polar angle
- // 		to distinguish between 1st and 2nd gamma). To handle the second photon, the energy (and conseuqently 
- //		the polar scattering angle) is sampled analogously to the 1st gamma. The saved scattering information
- // 		of the first gamma is then used to calculate the quantum entangled azimuthal scattering angle of the 
- //		second gamma based on the double differential cross section (Snyder et. al., 1948; Pryce and Ward, 1947).
+ //	Differentiation between 'first' and 'second' photon of the quantum entangled gamma pair is made.
+ // 	For the first photon, handling is identical to original model; additionally polar and azimuthal
+ // 	scattering angles are saved to external variables (the method checks the existence of a polar angle
+ // 	to distinguish between 1st and 2nd gamma). To handle the second photon, the energy (and consequently 
+ //	the polar scattering angle) is sampled analogously to the 1st gamma. The saved scattering information
+ // 	of the first gamma is then used to calculate the quantum entangled azimuthal scattering angle of the 
+ //	second gamma based on the double differential cross section (Snyder et. al., 1948; Pryce and Ward, 1947).
+ //	This is done in the dPhiSamling(args) method.
  //		
- // - 
+ //	Doppler broadening identical to original model
+ //
+ //	The compton scattered photon (QEGamma particle) is killed and photon of type G4DynamicParticle is created
+ // 	in its place (inheriting energy, momentum direction and polarization) -> the quantum entanglement is now
+ //	lost and the particle can be tracked by Geant4 as a non-entangled photon.
 
  #include "QEComptonModel.hh"
  #include "G4PhysicalConstants.hh"
