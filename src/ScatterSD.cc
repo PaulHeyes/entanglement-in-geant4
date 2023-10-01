@@ -23,15 +23,17 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 16.09.2015
-//Brief Implementation of the ScatterSD class
+// Paul Heyes, 2019
+// Brief Implementation of the ScatterSD class
 
 /*
 Initialize()
 This method allocates a hits collection object to the sensitive detector (scatterer).
 
 ProcessHits()
-This method is invoked by G4SteppingManager at some point during the processing or analysis of an event (unfortunately I wasn't able to find the exact point at which the function is called). It creates an object 'hit' as an instance of the Hit class, passing on variables such as time and position (local & global).
+This method is invoked by G4SteppingManager at some point during the processing/analysis of 
+an event. It creates an object 'hit' as an instance of the Hit class, passing on variables time, 
+position (local & global), energy, momentum-direction and polarization.
 */
 
 #include "ScatterSD.hh"
