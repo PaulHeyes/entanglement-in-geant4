@@ -28,8 +28,14 @@
 //
 // 
 // ---------------------------------------------------------------------
-//  Paul Heyes, 24 Octobre 2019
+//  Paul Heyes, 2019
 // ---------------------------------------------------------------------
+
+ /*
+QEGamma class is identical to the G4Gamma class. We need to create a 'special'
+particle class in order to apply the correct physics -> in this case the 'standard'
+Compton scattering or the quantum entangled Compton scattering. 
+ */	
 
 #include "G4QEGamma.hh"
 #include "G4SystemOfUnits.hh"
