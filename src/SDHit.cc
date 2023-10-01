@@ -24,11 +24,17 @@
 // ********************************************************************
 //
 
-//Paul Heyes, 16.09.2015
+//Paul Heyes, 2019
 //Brief Implementation of the Hit class
 
 /*
-The SDHit class records most things (the scatterer ID, the particle time and the particle local and global positions, etc).
+The SDHit class records values of interest (as defined in the ScatterSD class too):
+the scatterer ID, the particle time and the particle local and global positions, energy,
+momentum direction, polarization (for most of these parameters the values both before and
+after the hit, i.e., preStep and postStep points).
+
+In the Print() method many values are written to the console. Useful for testing, but should
+definitely be switched off for 'larger' simulations.
 */
 
 #include "SDHit.hh"
