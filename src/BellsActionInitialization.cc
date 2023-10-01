@@ -23,8 +23,8 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 16.09.2015
-//Brief Implementation of the BellsActionInitialization class
+// Paul Heyes, 2019
+// Brief Implementation of the BellsActionInitialization class
 
 /*
 This class creates new instances of the BellsPrimaryGeneratorAction, BellsRunAction and EventAction classes.
