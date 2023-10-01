@@ -24,13 +24,24 @@
 // ********************************************************************
 //
 
-//Paul Heyes, 16.09.2015
+// Paul Heyes, 2019
 // This class file describes how to generate the primary events
 
 /*
-In the constructor of BellsPrimaryGeneratorAction the number of particles per event is set to one and the type of particle is specified (i.e. the gamma particle is selected from the particleTable). Its point of origin (the centre of the world), energy of 511keV, momentum direction (toward the first scatterer) and polarisation are set. Note: At this point however no particle is 'physically' created.
+In the constructor of BellsPrimaryGeneratorAction the number of particles per event is set to one and the type 
+of particle is specified (i.e. the novel QEGamma particle is selected from the particleTable). Its point of origin 
+(the centre of the world), energy of 511keV, momentum direction (toward the first scatterer) and polarisation are set. 
+Note: At this point however no particle is 'physically' created.
 
-While all the values are initially set in the constructor, the actual event is created in the GeneratePrimaries() function. Here a random momentum direction and polarisation may be implemented in the future. (Note: This must happen here, since only the GeneratePrimaries() function is called every event. If it is done in the constructor, every particle during one run will have the same identical values!)
+While all the values are initially set in the constructor, the actual event is created in the GeneratePrimaries() function. 
+Here a random momentum direction and polarisation may be implemented in the future. 
+(Note: This must happen here, since only the GeneratePrimaries() function is called every event. 
+If it is done in the constructor, every particle during one run will have the same identical values!)
+
+Note: The annihilation is replaced by two particle guns (particles being generated in BellsPrimaryGeneratorAction and 
+EntangledGeneratorAction), with the physical parameters being hard-coded. This is done for the sake of simplicity - 
+randomizing the direction (as described briefly above) or even implementing the model for 'actual' annihilations taking
+place during a simulation run (creating QEGammas and passing relevant values) should be possible. 
 */
 
 #include "BellsPrimaryGeneratorAction.hh"
