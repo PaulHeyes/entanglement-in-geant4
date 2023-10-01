@@ -28,14 +28,15 @@
 
 /*
 Instead of generating actual annihilations in the Geant4 framework, an easier route is taken here,
-namely, two photons with opposite momentum direction and respective energy of 511 keV are created.
+namely, two photons with opposite momentum direction and respective energy of 511 keV are created. 
 
 In the constructor, the values for the second gamma particle of the same energy, opposite momentum direction 
 (toward the second scatterer) and perpendicular polarisation, compared to the first particle created in 
 'BellsPrimaryGeneratorAction' are set and the particle origin placed in the centre of the world. 
+
 Again, the 'physical' event is created in the GeneratePrimaries() function. In case the 'first' events have 
-been created with random direction and polarisation, these values must be passed on (as arguments maybe?
-- then the function must be also changed where called in the QERunManager) and the opposite/perpendicular values set for the second photons.
+been created with random direction and polarisation, these values must be passed on and the 
+opposite/perpendicular values set for the second photons (in GeneratePrimaries()).
 */
 
 #include "EntangledGeneratorAction.hh"
