@@ -25,6 +25,8 @@
  //
  // $Id$
  //
+ /////////////// Original G4LivermoreComptonModel: ////////////////////
+ //
  // Authors: G.Depaola & F.Longo
  //
  // History:
@@ -37,6 +39,24 @@
  //                  - remove GetMeanFreePath method and table
  //                  - added protection against numerical problem in energy sampling
  //                  - use G4ElementSelector
+ //
+ //
+ //
+ ///////////////            QEComptonModel:            ////////////////////
+ //
+ // Author: Paul Heyes
+ // 
+ // Main changes compared to orginial model:
+ // - SampleSecondaries method: 
+ //		Differentiation between 'first' and 'second' photon of the quantum entangled gamma pair is made.
+ // 		For the first photon, handling is identical to original model; additionally polar and azimuthal
+ // 		scattering angles are saved to external variables (the method checks the existence of a polar angle
+ // 		to distinguish between 1st and 2nd gamma). To handle the second photon, the energy (and conseuqently 
+ //		the polar scattering angle) is sampled analogously to the 1st gamma. The saved scattering information
+ // 		of the first gamma is then used to calculate the quantum entangled azimuthal scattering angle of the 
+ //		second gamma based on the double differential cross section (Snyder et. al., 1948; Pryce and Ward, 1947).
+ //		
+ // - 
 
  #include "QEComptonModel.hh"
  #include "G4PhysicalConstants.hh"
@@ -300,7 +320,7 @@
 	   QEPhi = phi;
 		 
 		 
-	   // Direction of photon 1
+       // Direction of photon 1
        dirx = sinTheta*std::cos(phi);
        diry = sinTheta*std::sin(phi);
        dirz = cosTheta;
@@ -390,12 +410,12 @@
 	   if( phi < 0. ) phi = phi + twopi;
        
        
-       /// Histogram business!
+       /// Histogram business
        analysisManager->FillH1(8, QEPhi);
        analysisManager->FillH1(9, phi);
        analysisManager->FillH1(10, dQEPhi);
 		 
-	   // Photon 2 - transformed to rotated reference frame
+       // Photon 2 - transformed to rotated reference frame
        // Depending on +/- 90° polarization offset +/- dirx and diry 
        dirx = std::sin(polPhi)*sinTheta*std::sin(phi);
        diry = std::sin(polPhi)*sinTheta*std::cos(phi);
@@ -562,9 +582,9 @@ G4double QEComptonModel::dPhiSampling(G4double epsilon1, G4double epsilon2)
      G4double onecost2 = (1.- epsilon2)/(epsilon2*E0_m);
      G4double sinThetaSqr2   = onecost2*(2.-onecost2);
 
-     G4cout << "....oooOO0OOooo....QEComptonModel....oooOO0OOooo...." << G4endl;
-     G4cout << " epsilon = " << epsilon1 << G4endl;
-     G4cout << " sin(theta)^2 = " << sinThetaSqr1 << G4endl;
+     // G4cout << "....oooOO0OOooo....QEComptonModel....oooOO0OOooo...." << G4endl;
+     // G4cout << " epsilon = " << epsilon1 << G4endl;
+     // G4cout << " sin(theta)^2 = " << sinThetaSqr1 << G4endl;
      
      g1 = epsilon1 + 1/epsilon1;
      g2 = epsilon2 + 1/epsilon2;
