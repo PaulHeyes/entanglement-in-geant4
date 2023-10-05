@@ -23,20 +23,23 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 16.09.2015
+//Paul Heyes, 2019
 //Brief Implementation of the BellsRunAction class
 
 /*
 In the function 'GenerateRun()' an instance of the BellsRun class is created (i.e. new run is generated).
 
-The 'BeginOfRunAction()' method prepares Ntuples and Histograms and opens a file ('BellsData') for saving the data during the run.
-Ntuples are created for saving the Detector and Scatterer hits, as well as the time of hits in Scatterer 2.
-1d histograms are created to display the number of hits per run (this is no longer very useful data for our purpose). 
-2d histograms are created to show the local positions of the hits in both detectors respectively.
+The 'BeginOfRunAction()' method prepares Ntuples and Histograms and opens a file ('BellsData') for saving 
+the data during the run. Ntuples are created for saving the Detector and Scatterer hits, as well as the 
+time of hits in Scatterer 2. 1d histograms are created to display the number of hits per run (this is no 
+longer very useful data for our purpose). 2d histograms are created to show the local positions of the hits 
+in both detectors respectively.
 
-Both of the before mentionde methods are called by the RunManager during the RunInitialization (i.e. before the run).
+Both of the aforementioned methods are called by the RunManager during the RunInitialization (i.e. before 
+the run).
 
-The 'EndOfRunAction()' method is called at the end of a run. Output of information at the end of the run is possible here, mainly however the collected data is written to the file, which is subsequently closed.
+The 'EndOfRunAction()' method is called at the end of a run. Output of information at the end of the run is 
+possible here, mainly however the collected data is written to the file, which is subsequently closed.
 */
 
 #include "BellsRunAction.hh"
