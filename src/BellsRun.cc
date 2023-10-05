@@ -23,11 +23,12 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 16.09.2015
+//Paul Heyes, 2019
 //Brief Implementation of the BellsRun class
 
 /*
-In the 'RecordEvent()' method of 'BellsRun' it doesn't seem necessary to do much, since the methods in 'EventAction' dealt with all the hits already. The call to 'G4Run::RecordEvent()' simply counts the number of the event. However this method must exist since it is called by the RunManager.
+In the 'RecordEvent()' method of 'BellsRun' it isn't necessary to do much, 
+since the methods in 'EventAction' deal with all the hits.
 */
 
 #include "BellsRun.hh"
