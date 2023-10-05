@@ -60,6 +60,13 @@
 //
 // -----------------------------------------------------------------------------
 
+// Paul Heyes, 2019
+
+/*
+Minor change needed here (in isApplicable()):
+Compton scattering must be applicable also to the 'new' QEgamma particle type. 
+*/
+
 #include "G4ComptonScattering.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4KleinNishinaModel.hh"
@@ -93,7 +100,6 @@ G4ComptonScattering::~G4ComptonScattering()
 
 G4bool G4ComptonScattering::IsApplicable(const G4ParticleDefinition& p)
 {
-  G4cout << "This one is being called!!!" << G4endl;
 	if(&p == G4Gamma::Gamma()) {
 		return true;}
 	else if (&p == G4QEGamma::QEGamma()) {
