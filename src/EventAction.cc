@@ -23,16 +23,24 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 16.09.2015
+//Paul Heyes, 2019
 //Brief Implementation of the EventAction class
 
 /*
 Aside from the constructor and destructor, the two methods in this class are called during event-processing.
 
-The 'BeginOfEventAction()' method sets the ID's of the individual sensitive detectors in order to collect the hits recorded in each of them. 
+The 'BeginOfEventAction()' method sets the ID's of the individual sensitive detectors in order to collect 
+the hits recorded in each of them. 
 
-In the 'EndOfEventAction()' method the hits collections from the aforementioned sensitive detectors are retrieved. Using the G4AnalysisManager the ntuples and histograms are filled with the collected data. Here 1d histograms are filled with the number of hits in each of the detectors. (Note: There are multiple hits per one event in some cases because the photons may scatter multiple times in the each detector and each scatterer! This needs to be put in consideration when working out the scattering angle: The scatterers may have to be of smaller dimensions and then the first hit in time in the detectors used to compute the angle.) The 2d histograms are filled with the local (with respect to the detector) x and y coordinates of the hits. The ntuples are filled with the hits and their times in all detectors and scatterers.
-Some of the data is also printed directly on screen.
+In the 'EndOfEventAction()' method the hits collections from the aforementioned sensitive detectors are 
+retrieved. Using the G4AnalysisManager the ntuples and histograms are filled with the collected data. Here 
+1d histograms are filled with the number of hits in each of the detectors. (Note: There are multiple hits per 
+one event in some cases because the photons may scatter multiple times in the each detector and each scatterer! 
+This needs to be put in consideration when working out the scattering angle: The scatterers may have to be of 
+smaller dimensions and then the first hit in time in the detectors used to compute the angle.) The 2d histograms
+are filled with the local (with respect to the detector) x and y coordinates of the hits. The ntuples are filled 
+with the hits and their times in all detectors and scatterers.
+Some of the data is also currently printed directly to the console.
 */
 
 #include "EventAction.hh"
@@ -273,35 +281,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
            // if(QEPhi != 0){
             analysisManager->FillH1(4,delta_phi);
-           // }
-
-// This probably has to be done differently!?
-
-		   /*
-           if(QETheta != 0 && theta2 != 0)
-           {
-
-               if(theta2 < QETheta + 0.01 && theta2 > QETheta - 0.01)
-               {
-               // G4double delta_phi = std::abs(QEPhi2-phi2);
-               // G4cout << "______ Phi = " << QEPhi2 << " , Phi_2 = " << phi2 << " , delta_phi = " << delta_phi << " ________" << G4endl;
-               // analysisManager->FillH1(4,delta_phi);
-
-                if(delta_phi < halfpi+0.01 && delta_phi > halfpi-0.01)
-                {
-                    analysisManager->FillH1(5,theta2);
-                    analysisManager->FillNtupleDColumn(0,theta2);
-                }
-                if(delta_phi < 0.01 || delta_phi > 2*pi-0.01)
-                {
-                    analysisManager->FillH1(6,delta_phi);
-                    analysisManager->FillH1(7,theta2);
-                    analysisManager->FillNtupleDColumn(1,theta2);
-                }
-               }
-           }
-           */
-           
+           // }          
 
         }
 
