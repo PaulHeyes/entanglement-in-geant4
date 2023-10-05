@@ -23,11 +23,21 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 18.10.2016
+//Paul Heyes, 2019
 //Implementation of the BellsStackingAction class
 
 /*
-Description
+The stacking (~'order in which tracks are taken care of') is quite important for the quantum entangled
+Compton scattering. The reason being, that each pair of quantum entangled photons must have a well-defined 
+set of correlated variables, i.e., the correct scattering angles must be passed on to the respective entangled
+partner. In the case of poorly implemented stacking, the wrong variables may be saved and the entanglement 
+effectively broken. 
+Depending on the use case, the user must take extra care with the stacking in order to obtain the desired result.
+
+In this specific implementation, all particle tracks that do not belong to either a 'gamma' or 'QEgamma' type
+are stopped and killed immediately, since solely Compton scattering is of interest here. Furthermore, primaries,
+gammas and QEgammas are classified as urgent (which is obsolete given that other particle types are not tracked -
+this should mainly highlight the idea in a more general setting).
 */
 
 #include "BellsStackingAction.hh"
