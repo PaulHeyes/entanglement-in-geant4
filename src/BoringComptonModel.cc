@@ -23,7 +23,7 @@
  // * acceptance of all terms of the Geant4 Software license.          *
  // ********************************************************************
  //
- // $Id$
+ // ////////      G4LivermoreComptonModel        //////////////
  //
  // Authors: G.Depaola & F.Longo
  //
@@ -37,6 +37,18 @@
  //                  - remove GetMeanFreePath method and table
  //                  - added protection against numerical problem in energy sampling
  //                  - use G4ElementSelector
+
+
+
+ // ////////          BoringComptonModel            //////////////
+ // 
+ // 'Author': Paul Heyes, 2019
+ //
+ // Original model has to be adapted in order to pass scattering angles to external variables for quantum 
+ // entangled events. 
+ // In this implementation, the polar scattering angle is held constant - sampling is skipped and an angle is
+ // hard-coded instead (out of interest of model validation while dealing with poor computational capabilities).
+ 
 
  #include "BoringComptonModel.hh"
  #include "G4PhysicalConstants.hh"
