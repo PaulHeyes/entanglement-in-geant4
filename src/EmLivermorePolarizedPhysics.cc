@@ -31,8 +31,8 @@ Only minor adaptions are made to the EmLivermorePolarizedPhysics class:
 - Header files QEComptonModel.hh and BoringComptonModel.hh, as well as GEgamma.hh are included.
 - In the method ConstructParticle(), the QEgamma particle is added.
 - In the method ConstructProcess(), the relevant process models are added depending on the particle type.
-  For a QEgamma particle, an instance of the the QEComptonModel is registered as the applicale model; for a
-  standard gamma, the BoringComptonModel is registered.
+  For a QEgamma particle, an instance of the the QEComptonModel is registered as the applicale model within
+  the G4ComptonScattering; for a standard gamma, the BoringComptonModel is registered.
 
 To make things simpler, all other possible EM processes have been commented out, but can of course be switched
 back on again.
