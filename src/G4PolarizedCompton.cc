@@ -117,7 +117,6 @@ void G4PolarizedCompton::CleanTable()
 
 G4bool G4PolarizedCompton::IsApplicable(const G4ParticleDefinition& p)
 {
-	G4cout << "I am being called!!!" << G4endl;
 	if(&p == G4Gamma::Gamma()) {
 		return true;}
 	else if (&p == G4QEGamma::QEGamma()) {
