@@ -52,6 +52,12 @@
 // 11-06-07, add PostStepGetPhysicalInteractionLength (A.Schalicke)
 // -----------------------------------------------------------------------------
 
+// Paul Heyes, 2019
+
+/*
+Minor change needed here (in isApplicable()):
+Compton scattering must be applicable also to the 'new' QEgamma particle type. 
+*/
 
 #include "G4PolarizedCompton.hh"
 #include "G4SystemOfUnits.hh"
