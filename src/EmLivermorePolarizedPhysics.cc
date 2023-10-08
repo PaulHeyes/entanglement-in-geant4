@@ -23,10 +23,10 @@
 // * acceptance of all terms of the Geant4 Software license. *
 // ********************************************************************
 //
-// $Id: EmLivermorePolarizedPhysics.cc 68750 2013-04-05 10:19:04Z gcosmo $
+// $Id: G4EmLivermorePolarizedPhysics.cc 68750 2013-04-05 10:19:04Z gcosmo $
 
 /*
-Only minor adaptions are made to the EmLivermorePolarizedPhysics class:
+Only minor adaptions are made to the G4EmLivermorePolarizedPhysics class:
 
 - Header files QEComptonModel.hh and BoringComptonModel.hh, as well as GEgamma.hh are included.
 - In the method ConstructParticle(), the QEgamma particle is added.
