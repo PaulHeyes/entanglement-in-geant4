@@ -23,103 +23,16 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 
-//Paul Heyes, 16.09.2015
+//Paul Heyes, 2019
 //Brief Implementation of the BellsPhysicsList class
 
 /*
-The used physics is registered. Here the idea is to implement a new physics class, probably using a standard one as a base class (e.g. EmStandardPhysics or EmLivermorePolarizedPhysics) containing the 'new' physics for the second photon. I.e. the information about the scattering angle of the first photon must be passed on, modifying the scattering angle probability distribution of the second photon (see paper by Snyder, Pasternack et. al.).
+The used physics is registered. Here the idea is to implement a new physics class, using 
+G4EmLivermorePolarizedPhysics as base class, containing the 'new' physics for the second photon.
 
-Open: 
-How is the angle going to be passed on?
-How is the physics going to be 'activated' just for the second particle?
-
-- A new particle class is created (gamma2), for which the physics is switched on. The particle class must be registered in the particleTable (how is this done?). After that, switching on the physics for this new particle class is simple (i.e. if (particle='gamma2') QEPhysics). The particle class could contain the scattering angle of the incident photon.
-
-- The scattering angle is set to zero or deleted by default after every 2 events. The new physics can be switched on if a scattering angle (not equal 0) exists. In this case no new particle class is needed, a standard gamma may be used. This case may prove simpler!
 */
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-/*
-
-#include "BellsPhysicsList.hh"
-//#include "BellsPhysicsListMessenger.hh"
-
-#include "PhysListEmStandard.hh"
-#include "PhysListEmLivermore.hh"
-//#include "PhysListEmPenelope.hh"
-
-#include "G4LossTableManager.hh"
-#include "G4UnitsTable.hh"
-#include "G4SystemOfUnits.hh"
-
-// particles
-
-#include "G4BosonConstructor.hh"
-#include "G4LeptonConstructor.hh"
-#include "G4MesonConstructor.hh"
-#include "G4BosonConstructor.hh"
-#include "G4BaryonConstructor.hh"
-#include "G4IonConstructor.hh"
-#include "G4ShortLivedConstructor.hh"
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-BellsPhysicsList::BellsPhysicsList()
-: G4VModularPhysicsList(),
-  fEmPhysicsList(0)
-  //fMessenger(0)
-{
-  G4LossTableManager::Instance();
-  SetDefaultCutValue(1.0*mm);
-
-  //fMessenger = new BellsPhysicsListMessenger(this);
-
-  SetVerboseLevel(1);
-
-  // EM physics
-  fEmName = G4String("livermore");
-  fEmPhysicsList = new PhysListEmLivermore(fEmName);
-
-  //add new units for cross sections
-  //
-  new G4UnitDefinition( "mm2/g", "mm2/g","Surface/Mass", mm2/g);
-  new G4UnitDefinition( "um2/mg", "um2/mg","Surface/Mass", um*um/mg);
-}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-BellsPhysicsList::~BellsPhysicsList()
-{
-  //delete fMessenger;
-}
-
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void BellsPhysicsList::AddPhysicsList(const G4String& name)
-{
-  if (verboseLevel>0) {
-    G4cout << "PhysicsList::AddPhysicsList: <" << name << ">" << G4endl;
-  }
-
-  if (name == fEmName) return;
-
-  if (name == "standard") {
-    fEmName = name;
-    delete fEmPhysicsList;
-    fEmPhysicsList = new PhysListEmStandard(name);
-
-  } else if (name == "livermore") {
-    fEmName = name;
-    delete fEmPhysicsList;
-    fEmPhysicsList = new PhysListEmLivermore(name);
-    }
-
-}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-*/
 
 
 #include "BellsPhysicsList.hh"
