@@ -43,12 +43,13 @@
  // ////////          BoringComptonModel            //////////////
  // 
  // 'Author': Paul Heyes, 2019
- //
- // Original model has to be adapted in order to pass scattering angles to external variables for quantum 
- // entangled events. 
- // In this implementation, the polar scattering angle is held constant - sampling is skipped and an angle is
- // hard-coded instead (out of interest of model validation while dealing with poor computational capabilities).
- 
+ /*
+ This is a dummy class for validation purposes (hence the unprofessional naming)! It is almost identical to the 
+ G4LivermorePolarizedComptonModel, the only differences being:
+ - The polar scattering angle is held constant - sampling is skipped and an angle is hard-coded instead (out of 
+   interest of model validation while dealing with poor computational capabilities).
+ - Azimuthal scattering angle(s) are saved to histograms.
+ */
 
  #include "BoringComptonModel.hh"
  #include "G4PhysicalConstants.hh"
