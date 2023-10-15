@@ -50,9 +50,9 @@
    interest of model validation while dealing with poor computational capabilities).
  - Azimuthal scattering angle(s) are saved to histograms.
 
- For making use of this validation, one can alter the specific model used for Compton scattering in 
- EmLivermorePolarizedPhysics, from the QEComptonModel to the BoringComptonModel. Then the simulation runs handling
- the QEgamma particles not regarding their entanglement, i.e., as 'normal' gamma particles.
+ Note: For altering the specific models used, one can make changes in EmLivermorePolarizedPhysics. As default 
+ (within this project) the QEComptonModel is used for particles of QEgamma type, whereas the BoringComptonModel
+ handles standard gamma particles.
  */
 
  #include "BoringComptonModel.hh"
