@@ -49,6 +49,10 @@
  - The polar scattering angle is held constant - sampling is skipped and an angle is hard-coded instead (out of 
    interest of model validation while dealing with poor computational capabilities).
  - Azimuthal scattering angle(s) are saved to histograms.
+
+ For making use of this validation, one can alter the specific model used for Compton scattering in 
+ EmLivermorePolarizedPhysics, from the QEComptonModel to the BoringComptonModel. Then the simulation runs handling
+ the QEgamma particles not regarding their entanglement, i.e., as 'normal' gamma particles.
  */
 
  #include "BoringComptonModel.hh"
