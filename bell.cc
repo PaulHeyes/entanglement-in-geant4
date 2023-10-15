@@ -37,6 +37,8 @@ follows:
   - polPhi is set in EntangledGeneratorAction class
   - QEPhi, dQEPhi, QEeps1 & QEeps2 are all sampled in the QEComptonModel class and used
     for the calculation of the differential cross section of the entangled Compton scattering
+Some of these variables are (re)set to zero in the event loop of the QERunManager (necessary 
+for correct calculation of the entangled Compton scattering).
 */
 
 #ifdef G4MULTITHREADED
