@@ -26,6 +26,19 @@
 
 // Paul Heyes, 2019
 
+/*
+Main method:
+  - Difference to standard Geant4: specific run manager QERunManager constructed
+  - Common user action classes set
+
+In addition all external variables necessary are defined. They are later set/used as 
+follows:
+  - QEPhi_ref is set in the EventAction class (only used for data collection in histogram)
+  - polPhi is set in EntangledGeneratorAction class
+  - QEPhi, dQEPhi, QEeps1 & QEeps2 are all sampled in the QEComptonModel class and used
+    for the calculation of the differential cross section of the entangled Compton scattering
+*/
+
 #ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
 #else
