@@ -33,14 +33,19 @@ The 'BeginOfEventAction()' method sets the ID's of the individual sensitive dete
 the hits recorded in each of them. 
 
 In the 'EndOfEventAction()' method the hits collections from the aforementioned sensitive detectors are 
-retrieved. Using the G4AnalysisManager the ntuples and histograms are filled with the collected data. Here 
-1d histograms are filled with the number of hits in each of the detectors. (Note: There are multiple hits per 
-one event in some cases because the photons may scatter multiple times in the each detector and each scatterer! 
-This needs to be put in consideration when working out the scattering angle: The scatterers may have to be of 
-smaller dimensions and then the first hit in time in the detectors used to compute the angle.) The 2d histograms
-are filled with the local (with respect to the detector) x and y coordinates of the hits. The ntuples are filled 
-with the hits and their times in all detectors and scatterers.
+retrieved. Using the G4AnalysisManager the ntuples and histograms are filled with the collected data:
+	- The azimuthal and polar scattering angles of the first hit in detector 1 and 2, respectively (in this 
+	  specific simple application we know the first hit is the gamma of interest)
+	- The difference in azimuthal angle between detector 1 and 2 (i.e., gamma 1 and 2)
+ 	- The hit entries of both detectors
+ 	- The time of the hits in detector 2
+  
 Some of the data is also currently printed directly to the console.
+
+NOTE: The external variable QEPhi_ref is only used to calculate the difference between azimuthal scattering angles 
+measured in the detectors. It is not used for the actual calculation of the differential cross section for the 
+Compton scattering. We still want to obtain the data from the hits in detectors rather, hence this (otherwise 
+obsolete) external variable is used.
 */
 
 #include "EventAction.hh"
@@ -145,24 +150,18 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     extern G4double QEPhi_ref;
     // extern G4double QEPhi;
-    // extern G4double QETheta;
-
 
     if(ID%2==0) // All even events (incl. 0)
     {
 
-        //G4cout << "||||||||| " << event->GetEventID() << " ||||||||||" << G4endl;
-
-        //Detector1
-        //G4int n_hit1 = dHC1->entries();                 //Number of hits
-        //analysisManager->FillH1(0, n_hit1);
-
+	// Detector 1
+	    
         if(n_hit1 > 0)
         {
            G4cout << "**** ScatterDetector1 Hit **** #" << n_hit1 << G4endl;
 
-        // Here we are solely interested in the first ScatterDetector hit (that of argument '0') for now
-        // indeed, this is true when only Compton scattering is simulated!
+           // Here we are solely interested in the first ScatterDetector hit (that of argument '0') for now
+           // indeed, this is true when only Compton scattering is simulated!
             
            SDHit* hit1 = (*sHC1)[1];
            G4ThreeVector momentumDirection1 = hit1->GetMomentumDirection();
@@ -192,13 +191,10 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
            //analysisManager->FillH2(0, x, y);          //Fill 2D-histogram with ScatterDetector1-hits (used for polarization instead...)
 
-		   ///
-		   G4double r = std::sqrt(x*x+y*y+z*z);
-		   //G4double phi = std::acos(x/r);
-		   //G4double validPhi = std::asin(y/r);
-		   
-		   G4double phi = std::atan2(y/r,x/r); 	
-		   ///
+	   ///
+	   G4double r = std::sqrt(x*x+y*y+z*z);
+	   G4double phi = std::atan2(y/r,x/r); 	
+	   ///
 
            G4double theta = std::acos(z/r);
 
@@ -206,7 +202,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
         
   
            if(phi != 0) analysisManager->FillH1(0, phi);
-            analysisManager->FillH1(1, theta);
+           analysisManager->FillH1(1, theta);
 
            QEPhi_ref = phi;
 
@@ -218,14 +214,12 @@ void EventAction::EndOfEventAction(const G4Event* event)
      {
 
         //Detector2
-        //G4int n_hit2 = dHC2->entries();
-        //analysisManager->FillH1(1, n_hit2);
 
         if(n_hit2 > 0)
         {
            G4cout << "**** ScatterDetector2 Hit **** #" << n_hit2 << G4endl;
            
-           // I think there should be a loop over the hit-IDs until scattering angle is no longer 0 (only if more physics processes are enabled)
+           // Probably there should be a loop over the hit-IDs until scattering angle is no longer 0 if more physics processes are enabled
         
            SDHit* hit2 = (*sHC2)[1];
            G4ThreeVector momentumDirection2 = hit2->GetMomentumDirection();
@@ -236,7 +230,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
            G4double y1 = pos1.y();
            G4double z1 = pos1.z();  
 
-		   G4double x2 = pos2.x();
+	   G4double x2 = pos2.x();
            G4double y2 = pos2.y();
            G4double z2 = pos2.z();
            
@@ -253,16 +247,11 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
            //analysisManager->FillH2(1, x, y);      //Fill 2D-histogram with ScatterDetector2-hits (used for polarization instead...)
 
-
-		   ///
-		   G4double r = std::sqrt(x*x+y*y+z*z);
-		   //G4double phi2 = std::acos(x/r);
-		   //G4double validPhi2 = std::asin(y/r);
-		   
-		   G4double phi2 = std::atan2(y/r,x/r); 	
-		   ///
-
-           // z = -z;
+	   ///
+	   G4double r = std::sqrt(x*x+y*y+z*z);
+	   G4double phi2 = std::atan2(y/r,x/r); 	
+	   ///
+		
            G4double theta2 = std::acos(z/r);
 
            //G4cout << "phi2 = " << phi2 << G4endl;
