@@ -27,9 +27,9 @@
 //Brief Implementation of the BellsPhysicsList class
 
 /*
-The used physics is registered. Here the idea is to implement a new physics class, using 
-G4EmLivermorePolarizedPhysics as base class, containing the 'new' physics for the second photon.
-
+The used physics is registered. Here, a new physics list EmLivermorePolarizedPhysics
+is included, using G4EmLivermorePolarizedPhysics as base class, but containing the 
+'new' physics for the second photon.
 */
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
