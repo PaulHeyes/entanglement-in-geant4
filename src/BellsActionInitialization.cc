@@ -27,11 +27,12 @@
 // Brief Implementation of the BellsActionInitialization class
 
 /*
-This class creates new instances of the BellsPrimaryGeneratorAction, BellsRunAction and EventAction classes.
+This class creates new instances of the BellsPrimaryGeneratorAction, BellsRunAction, 
+EventAction and BeStackingAction classes.
 */
 
 #include "BellsActionInitialization.hh"
-#include "BellsPrimaryGeneratorAction.hh"
+#include "BellsPrimaryGeneratorAction.hh"lls
 #include "BellsRunAction.hh"
 #include "EventAction.hh"
 #include "BellsStackingAction.hh"
