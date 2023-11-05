@@ -6,3 +6,5 @@ The provided code is an example of a very simple application, demonstrating the 
 Directly addressing the (first) elephant in the room: Originally the code was set up to simulate a Bell's experiment, though a far more appropriate naming concentrates on quantum entangled photons, which was then adopted at some point during this project. Hence half the classes are named something along the lines of 'bell_{usefulNaming}', while the rest are more aptly named. This is a little bit annoying, but was never rectified due to lazyness on the part of yours truly.
 
 Furthermore, the code was created using Geant4 version 10.03.p02, and may not necessarily be compatible other releases. 
+
+For a more in-depth introduction to the topic of quantum entanglement in Compton scattering, Geant4 and the general idea behind the implementation of the code provided here, please see the wiki!
